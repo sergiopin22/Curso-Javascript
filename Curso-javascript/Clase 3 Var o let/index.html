@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/Clase 3 Var o let/main.js">
+</head>
+<body>
+
+    <script src="/objects_and_functions/modulos/import_export.js" type="module"></script>
+    <script src="/objects_and_functions/nomodule.js"nomodule></script>
+    <h1 class="title">Fundamentos de javascript</h1>
+    
+    <!--
+       /* var hola = "hola mundo" // al declarar esta variable con var, esta es de ambito global
+        let saludo = "Let es mejor"// al declarar esta variable con Let, esta es de ambito de bloque
+        console.log(hola)
+        console.log(saludo)
+        console.log(window)
+        {
+            //Esto es un bloque de codigo
+        }
+       //////////////////////////////////////////////////////////////////////////////////////
+        //Ambito de bloque
+
+        console.log("***********************VAR*****************************")
+        var musica = "Rock"
+        console.log("variable musica antes del bloque ", musica);
+        {
+            var musica = "POP"
+            console.log("variable musica dentro del bloque ", musica);
+        }    
+        console.log("variable musica Despues del bloque ", musica);   
+
+        console.log("***********************LET*****************************")
+
+        let musica2 = "Rock"
+        console.log("variable musica antes del bloque ", musica2);
+        {
+            let musica2 = "POP"
+            console.log("variable musica dentro del bloque ", musica2);
+        }    
+        console.log("variable musica Despues del bloque ", musica2); */  
+
+///////////////////////////////////CONSTANTE///////////////////////////////////////////////
+        let a;// la  variables si pueden estar vacias y luego referenciar su valor
+        //const dos; No se pueden crear constantes vacias, tienes que asignarles un valor, desde el primer momento en que la creas
+        const Pi = 3.1416 //Correcto
+        console.log(Pi)
+        a = "Esto es una a";
+        //Pi = 3; las constantes no se les puede reasignar un valor nuevamente como las variables 
+        //las constantes las utilizamos para valores constantes que no cambian en el tiempo de creacion del programa
+///////////////////////////////////Objeto/////////////////////////////////////////////////////
+//un objeto es un conjunto de atributos y valores entre llaves de algo o alguien 
+        const Objeto = {
+            nombre : "Sergio Pinzón",
+            edad : 18
+        }
+        //un arreglo es una coleccion de datos, (una variable que almacena varias variables xD)
+        //luego veremos bien la clase de arreglos y objetos
+        const colores = ["blanco", "amarillo", "azul", "gris"];
+
+        console.log(Objeto)       
+        console.log(colores)    
+
+        Objeto.correo = "Sergiopin2220@gmail.com"//añadimos un atributo al objeto
+        colores.push("anaranjado")//añadimos un atributo al array con push()
+        //y volvemos a imprimir en consola
+
+        console.log(Objeto)       
+        console.log(colores)    
+//Conclusion de const, es que si declaras valores primitivos con const, no vas a poder cambiar 
+//el valor o reasginarselo ya que los primitivos acceden directamente al valor 
+//*** pero si definimos valores compuestos con const, si podremos agregar o quitar elementos :)**
+
+//Finalmente utilizamos let para variables que van a cambiar el valor o su tipo de dato a lo 
+//largo del ejecucion y creacion del programa
+
+// y const para variables que no van a cambiar ni en valor ni en tipo de dato a lo largo de la
+//ejecucion y creacion del programa, tambien seria bueno usar const para tipos de datos compuestos
+// ejemplo : arreglos, objetos etc..
+
+// ********************************TIPOS DE DATOS EN JAVASCRIPT*****************************
+
+//CADENAS DE TEXTO = STRINGS
+
+let nombre = "Sergio Alejandro";
+let apellido = 'Pinzón Barriga'
+let saludo1 = new String ('Hola Mundo');
+let saludo2 = new String ("Hola Bro");
+let lorem = "                                          Esto es un            parrafo de una linea para ser forzado con los metodos nuevos de abajo.";
+// holaskdfja
+
+console.log(nombre, apellido, saludo1, saludo2);
+console.log(nombre.length); // Length es una propiedad para saber cuantos caracteres tiene una
+//cadena de string :)
+console.log(apellido.toUpperCase(),// metodo para convertir todo a MAYUSCULAS
+//saludo.toLowerCase(),// metodo para convertir todo a minusculas
+lorem.includes("ser"),// metodo para saber si se encuentra alguna palabra en algun String o cadena de texto   
+lorem.includes("mi nombre"),
+lorem,
+lorem.trim(),// este metodo es para quitar los espacios en blanco o los caracteres que hayan afuera del texto
+lorem.split(" "),// este, metodo es para separar palabras o espacios un texto y no los coloca en un arreglo
+lorem.split(",")
+);
+
+//2 CARACTERISTICAS DE LAS CADENAS DE TEXTO!!
+// 1) LA CONCATENACIÓN = es unir un texto con una variable de tipo cadena STRING
+//EJEMPLO
+
+let apodo = "Speed "
+let mensaje = "Es un crack "
+let mensaje2 = "freefire"
+
+let concatenar = apodo + mensaje + "Esto es concatenar PAPA XD ";
+console.log(concatenar)
+
+//2) INTERPOLARIDAD DE VARIABLES = es meter dentro de una cadena de texto el valor dinamicamente de una variable
+//TEMPLATE STRING `${Variable}` - tambien podemos mostrar datos solo con `mensaje ul bla bla`
+
+let interpolaridad = `Estoy probando la interpolaridad de variables, soy ${apodo} en ${mensaje2}`
+console.log(interpolaridad);
+
+let ul = "<ul> <li>Enero</li><li>Febrero</li>        <li>Marzo</li><li>Junio</li  <li>Julio</li></ul>";
+
+    let ul2 = `<ul>
+        <li>Enero</li>
+        <li>Febrero</li>
+        <li>Marzo</li>
+        <li>Junio</li>
+        <li>Julio</li>
+    </ul>`
+    console.log(ul);
+    console.log(ul2);
+
+    //*************************NUMBERS****************************************************************
+
+    console.log("Tipo de dato Numeros")
+    let j = 2;
+    let b = new Number(4);
+    let decimal = 7.19;
+    let numeroinpunt = "25";
+    console.log(j,b)
+    console.log(decimal.toFixed(1));// el metodo tofixed nos pregunta cuando numeros decimales queremos mostrar y los aproxima dependiendo de lo que coloquemos en los parentesis del metodo
+    console.log(decimal.toFixed(5));
+    console.log(parseInt(decimal));// el metodo parseint() nos devuelve la parte entera recibe string o numbers
+    console.log(parseFloat(decimal)) // el metodo parseFloat() nos imprime la parte flotante no es muy util como lo es parseInt()
+    console.log(typeof numeroinpunt, typeof j)// la propiedad typeof nos indica de que naturaleza o que tipo de dato es una variable
+    console.log(parseInt(numeroinpunt))// aca lo convertimos para poderlo operar paso de string a numero entero
+    console.log(decimal + numeroinpunt);
+    
+    // TIPO DE DATO BOOLEANO
+
+    let verdadero = true;
+    let falso = false;
+
+    console.log(verdadero, falso)
+    console.log(typeof verdadero, typeof falso);
+
+    console.log(Boolean(0));
+    console.log(Boolean(-7));
+    console.log(Boolean(""));
+    console.log(Boolean(" "));
+
+      // *FUNCION EN JAVASCRIPT
+
+//   !Funcion declarada
+
+  function estoEsUnaFuncion(){
+    console.log("Esto es una funcion")
+    console.log("me llamaron function")
+  }
+
+  function functionQueDevuelveValor(){
+      console.log("uno")
+      console.log("dos")
+      console.log("tres")
+      return "soy una cadena"
+  }
+
+
+
+//   let valordefunction = functionQueDevuelveValor();
+//   console.log(valordefunction);
+
+//   _invocar o llamar funcion
+
+// estoEsUnaFuncion();
+
+let usuario = prompt("Dime tu nombre");
+let edad = prompt("Dime tu edad");
+
+function saludo (usuario, edad){
+alert(`su nombre es ${usuario}, y su edad es ${edad} años`);
+}
+
+saludo(usuario, edad);
+// saludo();
+
+
+
+
+-->
+
+
+  
+
+
+    </scrip>
+    
+</body>
+</html>

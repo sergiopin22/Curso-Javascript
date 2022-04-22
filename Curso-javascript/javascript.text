@@ -1,0 +1,55 @@
+Hoy JavaScript, es el único lenguaje capaz de ejecutarse en las 3 capas de una aplicación:
+1. Frontend (JavaScript).
+2. Backend (Node.js).
+3. Persistencia de Datos (MongoDB, Couch DB, Firebase, etc).
+/////////////////////////////////////////////////////////////////////
+
+Diseño y Desarrollo Web.
+Hacer Videojuegos.
+• Experiencias 3D, Realidad Aumentada, Realidad Virtual.
+• Controlar Hardware (Drones, robots, electrodomésticos).
+Aplicaciones Híbridas y Móviles.
+• Machine Learning.
+• etc.
+
+///////////////////////////////////////////////////////////////////////
+
+Lenguaje de Alto Nivel
+• Interpretado
+Dinámico
+• Débilmente Tipado
+• Multi paradigma
+• Sensible a MAYÚSCULAS y minúsculas
+• No necesitas los puntos y comas al final de cada línea
+
+////////////////////////////////////////////////////////////////////////
+
+• Los identificadores deben comenzar con:
+  o Una letra o
+  o Un signo de dolar $ o
+  o Un guión bajo_
+  o Nunca con números o caracteres especiales
+
+  //////////////////////////////////////////////////////////////////////
+    Ordenamiento de codigo
+    1. IMPORTACIÓN DE MÓDULOS.
+    2. DECLARACIÓN DE VARIABLES.
+    3. DECLARACIÓN DE FUNCIONES.
+    4. EJECUCIÓN DE CÓDIGO.
+
+    ///////////////////////////////////////////////////////////////////
+    Tipos de datos de JavaScript
+
+    1. Primitivos: Se accede directamente al valor.
+        o string
+       o number
+      o boolean
+        o null
+       o undefined
+        o NaN
+2. Compuestos: Se accede a la referencia del valor.
+        o object = {}
+        o array = []
+      o function () {}
+        o Class {}
+        o etc.
