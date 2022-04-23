@@ -1,5 +1,9 @@
 // __¿Qué hace el callback?
-// ?Nos ayuda a desarrollar código JavaScript asíncrono y nos mantiene a ?salvo de problemas y errores. En JavaScript, la forma de crear una ?función callback es pasándola como parámetro a otra función, y luego ?llamarla de vuelta justo después de que haya ocurrido algo o se haya ?completado alguna tarea
+//? Nos ayuda a desarrollar código JavaScript asíncrono 
+//? y nos mantiene a ?salvo de problemas y errores. En JavaScript, 
+//? la forma de crear una ?función callback es pasándola como parámetro a otra 
+//? función, y luego ?llamarla de vuelta justo después de que haya ocurrido 
+//? algo o se haya ?completado alguna tarea
 
 const operacion = function (numero1, numero2, callback){
     console.log(callback(numero1, numero2)) 
