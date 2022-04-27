@@ -78,7 +78,7 @@ cuadradoPromise(5)
     console.log(`Promise: ${obj.value}, ${obj.result}`)
     console.log("fin de la promesa")
 })
-.catch(err=> console.error(err));
+.catch(err => console.error(err));
 
 // LAS PROMESAS NOS CONVIENE UTILIZARLAS CUANDO TENEMOS UNA CONCATENACION
 // DE VARIOS PROCESOS ASINCRONOS 
