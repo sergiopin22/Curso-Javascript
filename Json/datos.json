@@ -1,0 +1,15 @@
+{
+    "cadena" :"sergio",
+    "numero" :"25",
+    "booleano" :"true",
+    "arreglo" :["correr", "programar", "cocinar"],
+    "objeto": {
+        "telefono": "311245935",
+        "correo": "sergiopin2220@gmail.com"
+    },
+    "nulo": "null"
+}
+
+
+
+
