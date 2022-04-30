@@ -27,7 +27,40 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
 // document.write("<h2>probando document.write() desde javascript , pdta: no es buena practica</h2>")
 
 //****************************** NODOS DEL DOM ************************************** */
-// ?Un nodo en el DOM es cualquier etiqueta del cuerpo, como un párrafo, el mismo body o incluso las etiquetas de una lista. Con Javascript podemos modificar estas etiquetas con el uso de eventos.
+// _Las siglas DOM significan Document Object Model, o lo que es lo mismo, la estructura del documento HTML. Una página HTML está formada por múltiples etiquetas HTML, anidadas una dentro de otra, formando un árbol de etiquetas relacionadas entre sí, que se denomina árbol DOM (o simplemente DOM).
+
+// _En Javascript, cuando nos referimos al DOM nos referimos a esta estructura, que podemos modificar de forma dinámica desde Javascript, añadiendo nuevas etiquetas, modificando o eliminando otras, cambiando sus atributos HTML, añadiendo clases, cambiando el contenido de texto, etc...
+
+// _Al estar "amparado" por un lenguaje de programación, todas estas tareas se pueden automatizar, incluso indicando que se realicen cuando el usuario haga acciones determinadas, como por ejemplo: pulsar un botón, mover el ratón, hacer click en una parte del documento, escribir un texto, etc...
+
+// *************************** EL OBJETO DOCUMENT *******************
+// ?En Javascript, la forma de acceder al DOM es a través de un objeto llamado document, que representa el árbol DOM de la página o pestaña del navegador donde nos encontramos. En su interior pueden existir varios tipos de elementos, pero principalmente serán  o :
+
+// !ELEMENT no es más que la representación genérica de una etiqueta: HTMLElement.
+// !NODE es una unidad más básica, la cuál puede ser ELEMENT o un nodo de texto.
+
+
+// Todos los elementos HTML, dependiendo del elemento que sean, tendrán un tipo de dato específico. Algunos ejemplos:
+
+
+// _HTMLElement	HTMLDivElement	<div>	Capa divisoria invisible (en bloque).
+// _HTMLElement	HTMLSpanElement	<span>	Capa divisoria invisible (en línea).
+// _HTMLElement	HTMLImageElement	<img>	Imagen.
+// _HTMLElement	HTMLAudioElement	<audio>	Contenedor de audio.
+// _Obviamente, existen muchos tipos de datos específicos, uno por cada etiqueta HTML.
+
+
+// *****************API NATIVA DE JAVASCRIPT **************************
+// ?En los siguientes capítulos veremos que Javascript nos proporciona un conjunto de herramientas para trabajar de forma nativa con el DOM de la página, entre las que se encuentran:
+
+// _🔍Buscar etiquetas	Familia de métodos entre los que se encuentran funciones como .getElementById(), .querySelector() o .querySelectorAll(), entre otras.
+// *🔮Crear etiquetas	Una serie de métodos y consejos para crear elementos en la página y trabajar con ellos de forma dinámica.
+// !🔌Insertar etiquetas	Las mejores formas de añadir elementos al DOM, ya sea utilizando propiedades como .innerHTML o método como .appendChild(), .insertAdjacentHTML(), entre otros.
+// _🎭Gestión de CSS	Consejos para la utilización de la API .classList de Javascript que nos permite manipular clases CSS desde JS, de modo que podamos añadir, modificar, eliminar clases de CSS de un elemento de una forma práctica y cómoda.
+//?🚢Navegar por tags	Utilización de una serie de métodos y propiedades que nos permiten «navegar» a través de la jerarquía del DOM, ciñéndonos a la estructura del documento y la posición de los elementos en la misma.
+
+
+//******************* */ NODOS ELEMENTOS Y SELECTORES ***************
 
 // METODOS QUE YA NO SE USAN PERO HACEN PARTE DEL DOM
 
@@ -50,4 +83,3 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
 
     // _DATOS DE QUERYSELECTOR INTERESANTE : "QUERYSELECTOR ES MAS LENTO EN EJECUTARSE QUE GETELEMENTBYID, JUSTAMENTE POR QUE EL QUERY TIENE QUE VALIDAR QUE TIPO DE SELECTOR LE ESTAS PASANDO"
 
-    
