@@ -54,4 +54,4 @@ console.log(JSON.stringify(datos))
 //     "arreglo":["correr","programar","cocinar"],
 //     "objeto":{"telefono":3112459351,"correo":"sergiopin2220@gmail.com"},
 //     "nulo":null
-// } <h1>WEB APIs</h1>
+// }
