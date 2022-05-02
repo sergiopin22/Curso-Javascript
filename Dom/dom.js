@@ -83,3 +83,25 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
 
     // _DATOS DE QUERYSELECTOR INTERESANTE : "QUERYSELECTOR ES MAS LENTO EN EJECUTARSE QUE GETELEMENTBYID, JUSTAMENTE POR QUE EL QUERY TIENE QUE VALIDAR QUE TIPO DE SELECTOR LE ESTAS PASANDO"
 
+    console.clear();
+
+    // ****************ATRIBUTOS Y DATA-ATTRIBUTES ************
+
+    // _METODOS PARA DEFINIR, OBTENER Y ELIMINAR VALORES DE ATRIBUTOS 
+
+    // *---  setAttribute() -- modifica el valor de un atributo
+    // *---  getAttribute() -- obtiene el valor de un atributo
+    // *---  removeAttribute() -- remueve el valor de un atributo
+
+    console.log(document.documentElement.lang)
+    console.log(document.documentElement.getAttribute("lang"))
+    //console.log(document.querySelector(".link-dom"))
+    //console.log(document.querySelector(".link-dom").getAttribute("href"))//esta es la mejor forma con get attribute()
+
+    // COMO ESTABLECER NUEVOS VALORES A LO ATRIBUTOS 
+
+    // document.documentElement.lang = "es"; //aca se lo cambiamos a es y estaba en en
+    // document.documentElement.setAttribute("lang", "es")
+
+    const input_nombre = document.querySelector(".input_nombre")
+    input_nombre.setAttribute("type", "range")
