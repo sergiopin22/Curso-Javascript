@@ -81,7 +81,7 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
 
     // ?solo se utiliza hoy en dia getElementByID, querySelector y querySelectorAll
 
-    // _DATOS DE QUERYSELECTOR INTERESANTE : "QUERYSELECTOR ES MAS LENTO EN EJECUTARSE QUE GETELEMENTBYID, JUSTAMENTE POR QUE EL QUERY TIENE QUE VALIDAR QUE TIPO DE SELECTOR LE ESTAS PASANDO"
+    // _DATOS DE QUERYSELECTOR INTERESANTE : "QUERYSELECTOR ES MAS LENTO EN EJECUTARSE QUE GETELEMENTBYID, JUSTAMENTE POR QUE EL QUERY TIENE QUE VALIDAR QUE TIPO DE SELECTOR DE CSS LE ESTAS PASANDO"
 
     console.clear();
 
@@ -92,16 +92,33 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
     // *---  setAttribute() -- modifica el valor de un atributo
     // *---  getAttribute() -- obtiene el valor de un atributo
     // *---  removeAttribute() -- remueve el valor de un atributo
+    // *---  hasAttribute() -- valida si tenemos un atributo en un elemento nos devuelve en valor bool
 
     console.log(document.documentElement.lang)
     console.log(document.documentElement.getAttribute("lang"))
-    //console.log(document.querySelector(".link-dom"))
+    console.log(document.querySelector(".link-dom"))
     //console.log(document.querySelector(".link-dom").getAttribute("href"))//esta es la mejor forma con get attribute()
 
     // COMO ESTABLECER NUEVOS VALORES A LO ATRIBUTOS 
 
-    // document.documentElement.lang = "es"; //aca se lo cambiamos a es y estaba en en
-    // document.documentElement.setAttribute("lang", "es")
+    document.documentElement.lang = "es"; //aca se lo cambiamos a es y estaba en en
+    document.documentElement.setAttribute("lang", "es")
 
-    const input_nombre = document.querySelector(".input_nombre")
-    input_nombre.setAttribute("type", "range")
+    const $linkDom = document.querySelector(".link-dom")//el simbolo $dolar nos indica que la variable con la cual
+    //estamos tratando hace parte del dom o el html y no es una variable logica necesaria del programa en si. es buena practica aplicar el dolar para no confundirse con tantas variables
+
+    $linkDom.setAttribute("target","blank")
+    $linkDom.setAttribute("rel","noopener")
+    // _En realidad, el rel=»noopener» es solo una instrucción para que el navegador impida el uso del objeto window. opener de Javascript. Como sabes, los bots de los motores de búsqueda rastrean las webs para posicionarlas correctamente y no interactúan con el rel=»noopener».
+    $linkDom.setAttribute("href","https://www.youtube.com/watch?v=l6npGZa_vgc&list=PLvq-jIkSeTUZ6QgYYO3MwG9EMqC-KoLXA&ab_channel=jonmircha")//!podemos modificar los atributos y valores de esos atributos
+
+    console.log($linkDom.hasAttribute("target"))//nos devuelve true porque si existe este atributo en el elemento $linkDom
+
+    $linkDom.removeAttribute("target")//aca removemos el atributo target 
+
+    console.log($linkDom.hasAttribute("target"))//nos devuelve false porque ya no existe este atributo en el elemento $linkDom
+
+    //!Data-Attributes
+    // Attributes tambien funcionan con los Data-Attributes
+    console.log($linkDom.getAttribute("data-description"));//imprime Document Object Model
+    console.log($linkDom.dataset);//imprime el tipo de dato mapa, que nos muestra hay dos data-attributes que son el id y el description
