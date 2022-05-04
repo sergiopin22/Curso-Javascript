@@ -122,3 +122,68 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
     // Attributes tambien funcionan con los Data-Attributes
     console.log($linkDom.getAttribute("data-description"));//imprime Document Object Model
     console.log($linkDom.dataset);//imprime el tipo de dato mapa, que nos muestra hay dos data-attributes que son el id y el description
+
+    console.clear();//LIMPIAMOS CONSOLA
+
+
+
+    // *********************ESTILOS Y VARIABLES CSS************************************
+
+
+    const $linkDomEnlace = document.querySelector(".link-dom")
+    console.log($linkDomEnlace.style)//para acceder a los estilos de una etiqueta o variable, lo hacemos con la notacion del punto y este nos devuelve un mapa con todas la propiedades de css 
+
+    // DATO A SABER : ES MUCHO MAS FRECUENTE ACCEDER A LOS STYLES DE UN ELEMENTO CON LA NOTACION DEL PUNTO QUE CON GETATTRIBUTE(), AUNQUE CLARO TAMBIEN SE PUEDE HACER
+
+    console.log($linkDomEnlace.getAttribute("style"))
+
+    console.log($linkDomEnlace.style.backgroundColor)//!accedemos al background-color, acordarse que van sin guion
+    console.log($linkDomEnlace.style.color)//accedemos al color de la variable $linkDomEnlace
+    console.log(window.getComputedStyle($linkDomEnlace))//!ESTA ES UNA SEGUNDA FORMA DE ACCEDER A LOS ESTILOS DE UN ELEMENTO 
+
+    console.log(getComputedStyle($linkDomEnlace).getPropertyValue("color"))//getPropertyValue podemos acceder al valor de la propiedad que le pasemos en dicho parametro, ojo no coloque window como en la linea pasada justamente porque si cuelga de window no es necesario 
+
+    //? **********************COMO ESTABLECEMOS VALORES************** 
+    // hay diferentes maneras de hacerlo
+
+    $linkDomEnlace.style.setProperty("text-decoration", "none")//aca si va con guiones, ya que esta pidiendo los parametros como string y se le aplico el 
+    $linkDomEnlace.style.setProperty("display", "block")//nos muestra como el enlace paso a hacer bloque
+    $linkDomEnlace.style.width = "50%";//aunque podemos tambien hacerlo de esta manera 
+    $linkDomEnlace.style.textAlign = "center";//aca alineamos el texto al centro del bloque
+    $linkDomEnlace.style.marginLeft = "auto"
+    $linkDomEnlace.style.marginRight = "auto"
+    $linkDomEnlace.style.padding = "1rem"
+    $linkDomEnlace.style.borderRadius = ".5rem"
+
+
+
+    // **********************VARIABLES CSS  - CUSTOM PROPERTIES CSS********************
+
+
+    // COMO ACCEDEMOS A LAS PROPIEDADES CSS DE LAS VARIABLES CSS 
+
+    const $html = document.documentElement;//accedemos al html
+    const $body = document.body;//accedemos al body del document
+
+    //creamos las variables y accedemos a las properties css
+
+    let varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color");
+    let varYellowColor = getComputedStyle($html).getPropertyValue("--yellow-color");
+
+    console.log(varDarkColor,varYellowColor);
+
+    //aca remplazamos el valor de body con lo que contiene las variables que capturaron el valor de las properties
+
+    $body.style.backgroundColor = varDarkColor;
+    $body.style.color = varYellowColor;
+
+    $html.style.setProperty("--dark-color", "tomato")//?porque al modificar el valor a la variable no aparece reflejado en pantalla?
+
+    // !Sencillo es porque tiene el valor desactualizado tienes que redefinir el valor a varDarkcolor 
+
+    varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
+    //?$body.style.backgroundColor = varDarkColor;//esto es con la notacion del punto, pero lo puedo hacer con setPropertie()
+    $body.style.setProperty("background-color", varDarkColor);
+
+
+    // !!Importante tener en cuenta que con la propiedad style del elemento no podremos acceder a propiedades declaradas en una hoja de estilos externa al documento HTML, solamente podremos acceder a los estilos declarados dentro del atributo style del elemento, si queremos consultar propiedades establecidas desde la hoja de estilos externa debemos usar getComputedStyle :)
