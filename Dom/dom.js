@@ -187,3 +187,34 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
 
 
     // !!Importante tener en cuenta que con la propiedad style del elemento no podremos acceder a propiedades declaradas en una hoja de estilos externa al documento HTML, solamente podremos acceder a los estilos declarados dentro del atributo style del elemento, si queremos consultar propiedades establecidas desde la hoja de estilos externa debemos usar getComputedStyle :)
+
+
+    // ***********************CLASES CSS************************************
+    
+    // _________CLASES, CLASSLIST Y METODOS DE CLASSLIST______________________
+
+    // !Usar classList es una forma práctica de acceder a la lista de clases de un elemento como una cadena de texto delimitada por espacios a través de element.
+
+    // ?add() -- añade una clase 
+    // ?remove() -- remueve o elimina una clase 
+    // ?item() -- devuelve la clase del indice especificado, es igual que los arrays empiezan desde cero
+    // ?contains() -- verifica si ese elemento posee o no, la clase especificada 
+    // ?replace() -- remplaza una clase por otra, recibe 2 parametros (clase actual, clase a remplazar)
+    // ?toggle() -- si no tiene la clase especificada, la agrega, si ya la tiene, la elimina.
+
+    const $card = document.querySelector(".card");//traere la primner card que encuentre en el documento
+    $card.classList.add("hola")
+    console.log($card.className)//nos devuelve las clases que tiene dicho elemnto
+    console.log($card.classList)//nos devuelve las clases que tiene dicho elemento a manera de "arreglo"
+
+    console.log($card.classList.contains("rotate-45"))
+    $card.classList.add("rotate-45")
+    console.log($card.classList.contains("rotate-45"))
+    $card.classList.remove("rotate-45")
+    console.log($card.classList.toggle("rotate-45"));//devolvera true
+    console.log($card.classList.toggle("rotate-45"));//devolvera false
+    console.log($card.classList.toggle("rotate-45"));
+    $card.classList.replace("rotate-45", "rotate-135")
+    $card.classList.add("opacity-80", "sepia")//agregando mas clases se puede hacer gracias a las comas 
+
+
