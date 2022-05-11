@@ -183,6 +183,7 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
 
     varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
     //?$body.style.backgroundColor = varDarkColor;//esto es con la notacion del punto, pero lo puedo hacer con setPropertie()
+    //con esto cambia de color el body $body.style.setProperty("background-color", varDarkColor);
     $body.style.setProperty("background-color", varDarkColor);
 
 
@@ -217,4 +218,44 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
     $card.classList.replace("rotate-45", "rotate-135")
     $card.classList.add("opacity-80", "sepia")//agregando mas clases se puede hacer gracias a las comas 
 
+// ****************TEXTOS Y HTML***********************
 
+const $whatIsDom = document.getElementById("que-es");
+
+let text = `
+<p>
+El modelo de objetos del documento (<b><i>Dom-Document Object Model</i></b>) es una API para documentos HTML Y XML
+</p>
+<p>Este provee una representación estructural del documento, permitiendo modificar su contenido y presentación visual mediante codigo JS 
+</p>
+<p>
+<mark>El Dom no es parte de la especificacion de javascript, es una API para los navegadores
+</mark>
+</p>`
+;
+
+$whatIsDom.innerText = text;//este solo sirve para explorer no es estandar y es para texto
+$whatIsDom.textContent = text;//cuando necesites insertar contenido de texto usa innerContent
+$whatIsDom.innerHTML = text;//cuando necesites insertar contenido html usa innerHTML
+$whatIsDom.outerHTML = text;//remplaza el contenido tambien como innerhtml, pero este nos soluciona el error que nos daba el innerhtml que mostraba que dentro del elemeno p habian mas p y eso semantica en html es mal visto o mal en seo, de hecho con outer remplazamos igualmente pero se respeta la estructura html
+
+
+// *************DOM Traversing*****************
+
+//!DOM Traversing o rrecorriendo el Dom, no es mas que una serie de propiedades que nos da le API del dom para poder rrecorrer los elementos o nodos
+
+// ?todos los que vamos a ver son para los elementos a las etiquetas como tal 
+
+const $cards = document.querySelector(".cards");
+console.log($cards.children)//esto me mostrara una collecion de los elemntos hijos de cards 
+
+// y si quisiera acceder a una tarjeta en particular lo hago de esta forma
+console.log($cards.children[1])
+
+console.log($cards.parentElement)//retorna el elemto padre : retorno el body
+console.log($cards.firstElementChild)//retorna al primer hijo element
+console.log($cards.lastElementChild)//retorna el ultimo hijo element
+console.log($cards.previousElementSibling)//retorna el elemento anterior a cards, que en este caso es el link 
+console.log($cards.nextElementSibling)//retorna el elemento siguiente a cards, que en este caso es el script 
+console.log($cards.childNodes)//nos devuelve los nodos de los hijos de cards
+console.log($cards.children[3].closest("section"))//nos devuelve el ancestro mas cercano que le coloquemos en los string que en este caso es cards 
