@@ -184,7 +184,7 @@ console.log(document.scripts)//con esto podemos ver los scripts del documento
     varDarkColor = getComputedStyle($html).getPropertyValue("--dark-color")
     //?$body.style.backgroundColor = varDarkColor;//esto es con la notacion del punto, pero lo puedo hacer con setPropertie()
     //con esto cambia de color el body $body.style.setProperty("background-color", varDarkColor);
-    $body.style.setProperty("background-color", varDarkColor);
+    //$body.style.setProperty("background-color", varDarkColor);
 
 
     // !!Importante tener en cuenta que con la propiedad style del elemento no podremos acceder a propiedades declaradas en una hoja de estilos externa al documento HTML, solamente podremos acceder a los estilos declarados dentro del atributo style del elemento, si queremos consultar propiedades establecidas desde la hoja de estilos externa debemos usar getComputedStyle :)
@@ -259,3 +259,43 @@ console.log($cards.previousElementSibling)//retorna el elemento anterior a cards
 console.log($cards.nextElementSibling)//retorna el elemento siguiente a cards, que en este caso es el script 
 console.log($cards.childNodes)//nos devuelve los nodos de los hijos de cards
 console.log($cards.children[3].closest("section"))//nos devuelve el ancestro mas cercano que le coloquemos en los string que en este caso es cards 
+
+console.clear()
+
+// ******************CREANDO ELEMENTOS Y FRAGMENTOS DOM*******************************
+
+// metodo para crear elementos 
+// createElement()
+// metodo para crear nodo de tipo text
+// createTextNode()
+
+const $figure = document.createElement("figure");
+const $image = document.createElement("img");
+const $figcaption = document.createElement("figcaption");
+const $figcaptionText = document.createTextNode("Animals");
+const $cardsContainer = document.querySelector(".cards");
+
+// metodo para agregar un hijo
+// appendChild()
+
+
+$image.setAttribute("src","https://placeimg.com/200/200/animals");
+$image.setAttribute("alt","Animals");
+$figure.classList.add("card")
+
+$figcaption.appendChild($figcaptionText)
+$figure.appendChild($image)
+$figure.appendChild($figcaption)
+$cardsContainer.appendChild($figure)   
+
+// otra forma de hacer otra card como lo hicimos en lo anterior, que no es buena practica pero 
+// si se podria 
+
+const $figure2 = document.createElement("figure");
+$figure2.innerHTML=`
+<img src="https://placeimg.com/200/200/people" alt="People"></img>
+<figcaption>People</figcaption>
+`;
+
+$figure2.classList.add("card")
+$cards.appendChild($figure2)
