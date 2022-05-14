@@ -288,14 +288,85 @@ $figure.appendChild($image)
 $figure.appendChild($figcaption)
 $cardsContainer.appendChild($figure)   
 
-// otra forma de hacer otra card como lo hicimos en lo anterior, que no es buena practica pero 
-// si se podria 
+// otra forma de hacer otra card como lo hicimos en lo anterior 
+// la siguiente forma es mucha mas comoda 
 
 const $figure2 = document.createElement("figure");
 $figure2.innerHTML=`
-<img src="https://placeimg.com/200/200/people" alt="People"></img>
+<img src="https://placeimg.com/200/200/people" alt="people"></img>
 <figcaption>People</figcaption>
 `;
 
 $figure2.classList.add("card")
 $cards.appendChild($figure2)
+
+// Lo anterior es para generar elementos uno por uno 
+// pero imaginemos que una Api nos regresa un json con varios datos, que dinamicamente
+// queremos agregar
+
+const estaciones = ["Primavera","Verano","Otoño","Invierno"]
+const $ul = document.createElement("ul")//cremos dinamicamente un ul 
+document.write("<h3>Estaciones del Año</h3>");
+document.body.appendChild($ul)//agregamos el ul al body
+
+estaciones.forEach(el =>{
+    const $li = document.createElement("li")
+    $li.textContent = el;
+    $ul.appendChild($li)
+})
+
+const continentes = ["Africa", "America", "Asia", "Europa", "Oceania"]
+const $ul2 = document.createElement("ul");
+document.write("<h3>Estaciones del Año</h3>");
+document.body.appendChild($ul2)
+$ul2.innerHTML = ""
+continentes.forEach((el) =>($ul2.innerHTML+=`<li>${el}</li>`));
+
+// cuando hacemos lo anterior de insertar o golpear al dom, esos datos que en este caso son los que estan en el array que pues no son muchos pero imaginemos que sean muchos, que una api nos da mil elementos pues al estar insertando al dom a cada rato y mas si son muchas inserciones al dom, estariamos ralentizando la aplicacion, asi que lo que vamos hacer es crear un fragmento dinamicos y hace fragmento le vamos a ir iterando los elementos para cuando ya esten cargados en el fragmento pegamos ese fragmento al dom y evitamos ralentizaciones y mejoramos el rendimiento 
+
+// aplica para catalogo, tienda de productos etc
+
+// ojo ese fragmento no esta en el dom esta en memoria, por eso es buena practica esta manera
+
+// !Definición y uso
+// !El createDocumentFragment()método crea un nodo fuera de la pantalla.
+
+// El nodo fuera de pantalla se puede usar para crear un nuevo fragmento de documento que se puede insertar en cualquier documento.
+
+// El createDocumentFragment()método también se puede utilizar para extraer partes de un documento, cambiar, agregar o eliminar parte del contenido e insertarlo nuevamente en el documento.
+
+// ?Nota
+// Siempre puede editar elementos HTML directamente. Pero una mejor manera es construir un fragmento de documento (fuera de pantalla) y adjuntar este fragmento al DOM real (en vivo) cuando esté listo. Debido a que inserta el fragmento cuando está listo, solo habrá un reflujo y un solo renderizado.
+
+// !!!Si desea agregar elementos de elementos HTML en bucles, el uso de fragmentos de documentos también mejora el rendimiento. sacado de la W3
+
+const meses = [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+];
+
+const $ul3 = document.createElement("ul")
+const $fragment = document.createDocumentFragment()
+
+// importante como son fragmentos del dom, no podemos usar la tecnica del innerHtml, si no crear los elementos nodos, es la forma mas adecuada
+
+meses.forEach(el=>{
+    const $li = document.createElement("li")
+    $li.textContent = el;
+    $fragment.appendChild($li)
+})
+
+document.write("<h3>Meses del Año</h3>");
+$ul3.appendChild($fragment)
+document.body.appendChild($ul3)
+
