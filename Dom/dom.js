@@ -433,3 +433,6 @@ $newCard.innerHTML = `
     $cards3.removeChild($cards3.lastElementChild)//?removeChild nos sirve para eliminar elementos hijos de un contenedor padre, en este caso escogimos el ultimo a eliminar 
 
     document.body.appendChild($cloneCards)
+
+
+    // aklsdjflaksjdflkajsdlfkjsak
