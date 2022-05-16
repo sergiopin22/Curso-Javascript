@@ -370,3 +370,66 @@ document.write("<h3>Meses del Año</h3>");
 $ul3.appendChild($fragment)
 document.body.appendChild($ul3)
 
+// ****************TEMPLATES HTML**********************
+
+// _Definicion: Como la palabra lo dice es como un modelo a seguir en el cual tu estructuras el contenido Html, que mediante javascript se convierta dinamico y es otra forma de interactuar con el Dom 
+
+const $cards2 = document.querySelector(".cards");
+const $template = document.getElementById("template-card").content//accedemos al contenido del template
+const $fragment2 = document.createDocumentFragment()
+cardContent = [
+    {
+    title:"Tecnologia",
+    img:"https://placeimg.com/200/200/tech",
+    },
+    {
+    title:"Animales",
+    img:"https://placeimg.com/200/200/animals",
+    },
+    {
+    title:"Arquitectura",
+    img:"https://placeimg.com/200/200/arch",
+    },
+    {
+    title:"Gente",
+    img:"https://placeimg.com/200/200/people",
+    },
+    {
+    title:"Naturaleza",
+    img:"https://placeimg.com/200/200/nature",
+    }
+]
+
+cardContent.forEach(el =>{
+    $template.querySelector("img").setAttribute("src",el.img)
+    $template.querySelector("img").setAttribute("alt",el.title)
+    $template.querySelector("figcaption").textContent = el.title;
+    let $clone = document.importNode($template,true);//import]Node nos permite clonar elementos del documento html y ese metodo no lo da el mismo Dom 
+    $fragment2.appendChild($clone);
+})
+
+$cards2.appendChild($fragment2);
+
+// !!!!!!!!***** OJO 
+// !LAS ETIQUETAS TEMPLATE NO SE RENDERIZAN EN EL DOM, YA QUE ESTA ETIQUETA TEMPLATE ES UN MODELO A SEGUIR, ES COMO UNA CLASE QUE SE UTILIZA COMO PLANTILLA POR ESO MISMO NO SE RENDERIZA POR QUE SU FUNCION ES SERVIR COMO PLANTILLA PARA GENERAR ESTRUCTURAS DEL DOM DINAMICAMENTE
+
+// *******************************Modificando Elementos (Old Style)***************************
+
+const $cards3 = document.querySelector(".cards");
+const $newCard = document.createElement("figure");
+const $cloneCards = $cards3.cloneNode(true)//clonenode clona la estructura dinamicamente de la seccion Cards3
+
+$newCard.innerHTML = `
+<img src="https://placeimg.com/200/200/any" alt="Any"></img>
+    <figcaption>Any</figcaption>
+    `
+
+    $newCard.classList.add("card");
+
+    $cards3.replaceChild($newCard,$cards3.children[2])//?replaceChild nos sirve para remplazar  hijos de un contenedor padre, recibe 2 para metros, el nuevo hijo y el hijo a cambiar 
+    
+    $cards3.insertBefore($newCard,$cards.children[5])//?insertBefore nos sirve para colocar nuestro nuevo hijo antes de un elemento hijo proporcionado, recibe 2 parametros el nuevo hijo a colocar y el hijo de referencia para colocarse antes de ese hijo de referencia 
+
+    $cards3.removeChild($cards3.lastElementChild)//?removeChild nos sirve para eliminar elementos hijos de un contenedor padre, en este caso escogimos el ultimo a eliminar 
+
+    document.body.appendChild($cloneCards)
