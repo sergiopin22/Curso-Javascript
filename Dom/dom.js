@@ -415,24 +415,57 @@ $cards2.appendChild($fragment2);
 
 // *******************************Modificando Elementos (Old Style)***************************
 
+// const $cards3 = document.querySelector(".cards");
+// const $newCard = document.createElement("figure");
+// const $cloneCards = $cards3.cloneNode(true)//clonenode clona la estructura dinamicamente de la seccion Cards3
+
+// $newCard.innerHTML = `
+// <img src="https://placeimg.com/200/200/any" alt="Any"></img>
+//     <figcaption>Any</figcaption>
+//     `
+
+//     $newCard.classList.add("card");
+
+//     $cards3.replaceChild($newCard,$cards3.children[2])//?replaceChild nos sirve para remplazar  hijos de un contenedor padre, recibe 2 para metros, el nuevo hijo y el hijo a cambiar 
+    
+//     $cards3.insertBefore($newCard,$cards.children[5])//?insertBefore nos sirve para colocar nuestro nuevo hijo antes de un elemento hijo proporcionado, recibe 2 parametros el nuevo hijo a colocar y el hijo de referencia para colocarse antes de ese hijo de referencia 
+
+//     $cards3.removeChild($cards3.lastElementChild)//?removeChild nos sirve para eliminar elementos hijos de un contenedor padre, en este caso escogimos el ultimo a eliminar 
+
+//     document.body.appendChild($cloneCards)
+
+    // ********************************MODIFICANDO ELEMENTOS COOL STYLE**************************
+
+    
+// .insertAdjacent...
+//     .insertAdjacentElement(position,el) = podemos manipular el nodo de tipo elemento
+//     .insertAdjacentHTML(position,html) = podemos manipular texto html, es como el innerHtml
+//     .insertAdjacentText(position,text) = podemos manipular el nodo de texto, es como el textContent
+
+// posiciones:
+//     beforebegin (hermano anterior) Antes que el propio ELEMENTO
+//     afterbegin (primer hijo) Justo dentro del ELEMENTO, antes de su primer ELEMENTO hijo.
+//     beforeend (ultimo hijo) Justo dentro del ELEMENTO, después de su último ELEMENTO hijo.
+//     afterend  (hermano siguiente) Después del propio ELEMENTO.
+
+
 const $cards3 = document.querySelector(".cards");
 const $newCard = document.createElement("figure");
-const $cloneCards = $cards3.cloneNode(true)//clonenode clona la estructura dinamicamente de la seccion Cards3
 
-$newCard.innerHTML = `
+
+let $contentCard = `
 <img src="https://placeimg.com/200/200/any" alt="Any"></img>
-    <figcaption>Any</figcaption>
+    <figcaption></figcaption>
     `
 
     $newCard.classList.add("card");
+    $newCard.insertAdjacentHTML("beforeend", $contentCard)
+    $newCard.querySelector("figcaption").insertAdjacentText("afterbegin","Any");
+   //$cards3.insertAdjacentElement("afterbegin",$newCard)
 
-    $cards3.replaceChild($newCard,$cards3.children[2])//?replaceChild nos sirve para remplazar  hijos de un contenedor padre, recibe 2 para metros, el nuevo hijo y el hijo a cambiar 
-    
-    $cards3.insertBefore($newCard,$cards.children[5])//?insertBefore nos sirve para colocar nuestro nuevo hijo antes de un elemento hijo proporcionado, recibe 2 parametros el nuevo hijo a colocar y el hijo de referencia para colocarse antes de ese hijo de referencia 
+// metodos nativos de jquery, que ya son nativos en javascript 
 
-    $cards3.removeChild($cards3.lastElementChild)//?removeChild nos sirve para eliminar elementos hijos de un contenedor padre, en este caso escogimos el ultimo a eliminar 
-
-    document.body.appendChild($cloneCards)
-
-
-    // aklsdjflaksjdflkajsdlfkjsak
+//$cards3.prepend($newCard); lo posiciona como primer hijo 
+//$cards3.append($newCard);  lo posiciona como ultimo hijo 
+//$cards3.before($newCard);  lo posiciona como hermano anterior del elemento de referencia
+//$cards3.after($newCard);   lo posiciona como hermano posterior del elemento de referencia
