@@ -469,3 +469,56 @@ let $contentCard = `
 //$cards3.append($newCard);  lo posiciona como ultimo hijo 
 //$cards3.before($newCard);  lo posiciona como hermano anterior del elemento de referencia
 //$cards3.after($newCard);   lo posiciona como hermano posterior del elemento de referencia
+
+
+// ********************************* MANEJO DE EVENTOS **************************************** 
+
+// ??En JavaScript, la interacción con el usuario se consigue mediante la captura de los eventos que éste produce. Un evento es una acción del usuario ante la cual puede realizarse algún proceso (por ejemplo, el cambio del valor de un formulario, o la pulsación de un enlace).
+
+
+function holaMundo (){
+    alert("hola mundo")
+    console.log(event)
+}
+
+const $eventoSemantico = document.getElementById("evento-semantico");
+const $eventoMultiple = document.getElementById("evento-multiple");
+
+    $eventoSemantico.onclick = holaMundo; //se iguala a la funcion que queremos ejecutar, pero sin los parentesis ya que si colocamos los parentesis se ejecuta apenas cargue la pagina 
+    $eventoSemantico.onclick = function (e){
+    alert("hola soy el manejador de eventos semantico")
+    console.log(e)
+    console.log(event)
+}
+
+// LA DESVENTAJAS QUE TIENE LOS EVENTOS SEMANTICOS ES QUE SOLO PUEDEN EJECUTAR UNA SOLA FUNCION A UN MISMO EVENTO EN ESTE CASO, ME EJECUTO EL SEGUNDO EVENTO Y NO EL PRIMERO CUANDO PRESIONE EL BOTON 
+
+// ESO ES COMO REMPLAZAR EL VALOR
+
+// !EVENTOS MULTIPLES
+// SE REFIERE A EJECUTAR VARIAS FUNCIONES QUE SE HAYAN DEFINIDO EN DIFERENTES MANEJADORES AL MISMO EVENTO 
+
+// ?COMO DECLARAMOS UN MANEJADOR DE EVENTOS MULTIPLES ?
+//ASI SE DECLARA
+
+$eventoMultiple.addEventListener("click",holaMundo);
+$eventoMultiple.addEventListener("click", (e) => {
+    alert("Hola Mundo Manejador de eventos Multiple");
+    console.log(e)
+    console.log(e.type)
+    console.log(e.target)
+});
+
+// _LA VENTAJA DE UTILIZAR MANEJADORES MULTIPLES COMO SU NOMBRE LO INDICA ES QUE PODEMOS EJECUTAR VARIOS EVENTOS SI QUISIERAMOS COSA QUE LOS MANEJADORES DE EVENTOS SEMANTICOS NO NOS DEJAN
+
+// addEventListener() las ventaja de usar esta funcion es que nos permite ejecutar varios eventos y aun asi tambien si son del mismo evento
+
+// MAS SOBRE addEventListener()
+// ?addEventListener() Registra un evento a un objeto en específico. El Objeto especifico puede ser un simple elemento en un archivo, el mismo  documento , una ventana o un  XMLHttpRequest.
+
+// _Para registrar más de un eventListener, puedes llamar addEventListener() para el mismo elemento pero con diferentes tipos de eventos o parámetros de captura.
+
+// PARAMETROS : TYPE : Una cadena representando el  tipo de evento a escuchar.
+// LISTENER :El objeto que recibe una notificación cuando un evento de el tipo especificado ocurre. Debe ser un objeto implementando la interfaz EventListener o solo una function en JavaScript.
+
+// !ESOS SON COMO LOS 2 PARAMETROS MAS CONOCIDOS O USADOS DE LA FUNCION addEventListener(TYPE,LISTENER)
