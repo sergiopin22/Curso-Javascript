@@ -476,20 +476,20 @@ let $contentCard = `
 // ??En JavaScript, la interacción con el usuario se consigue mediante la captura de los eventos que éste produce. Un evento es una acción del usuario ante la cual puede realizarse algún proceso (por ejemplo, el cambio del valor de un formulario, o la pulsación de un enlace).
 
 
-function holaMundo (){
-    alert("hola mundo")
-    console.log(event)
-}
+// function holaMundo (){
+//     alert("hola mundo")
+//     console.log(event)
+// }
 
-const $eventoSemantico = document.getElementById("evento-semantico");
-const $eventoMultiple = document.getElementById("evento-multiple");
+// const $eventoSemantico = document.getElementById("evento-semantico");
+// const $eventoMultiple = document.getElementById("evento-multiple");
 
-    $eventoSemantico.onclick = holaMundo; //se iguala a la funcion que queremos ejecutar, pero sin los parentesis ya que si colocamos los parentesis se ejecuta apenas cargue la pagina 
-    $eventoSemantico.onclick = function (e){
-    alert("hola soy el manejador de eventos semantico")
-    console.log(e)
-    console.log(event)
-}
+//     $eventoSemantico.onclick = holaMundo; //se iguala a la funcion que queremos ejecutar, pero sin los parentesis ya que si colocamos los parentesis se ejecuta apenas cargue la pagina 
+//     $eventoSemantico.onclick = function (e){
+//     alert("hola soy el manejador de eventos semantico")
+//     console.log(e)
+//     console.log(event)
+// }
 
 // LA DESVENTAJAS QUE TIENE LOS EVENTOS SEMANTICOS ES QUE SOLO PUEDEN EJECUTAR UNA SOLA FUNCION A UN MISMO EVENTO EN ESTE CASO, ME EJECUTO EL SEGUNDO EVENTO Y NO EL PRIMERO CUANDO PRESIONE EL BOTON 
 
@@ -501,13 +501,15 @@ const $eventoMultiple = document.getElementById("evento-multiple");
 // ?COMO DECLARAMOS UN MANEJADOR DE EVENTOS MULTIPLES ?
 //ASI SE DECLARA
 
-$eventoMultiple.addEventListener("click",holaMundo);
-$eventoMultiple.addEventListener("click", (e) => {
-    alert("Hola Mundo Manejador de eventos Multiple");
-    console.log(e)
-    console.log(e.type)
-    console.log(e.target)
-});
+// $eventoMultiple.addEventListener("click",holaMundo);
+// $eventoMultiple.addEventListener("click", (e) => {
+//     alert("Hola Mundo Manejador de eventos Multiple");
+//     console.log(e)
+//     console.log(e.type)
+//     console.log(e.target)
+// });
+
+// !!!!!EL CODIGO SE COMENTO PORQUE SE ESTA USANDO EN LA SIGUIENTE SECCION DEL TEMA EN CUANTO A PARAMETROS Y REMOVER
 
 // _LA VENTAJA DE UTILIZAR MANEJADORES MULTIPLES COMO SU NOMBRE LO INDICA ES QUE PODEMOS EJECUTAR VARIOS EVENTOS SI QUISIERAMOS COSA QUE LOS MANEJADORES DE EVENTOS SEMANTICOS NO NOS DEJAN
 
@@ -516,9 +518,64 @@ $eventoMultiple.addEventListener("click", (e) => {
 // MAS SOBRE addEventListener()
 // ?addEventListener() Registra un evento a un objeto en específico. El Objeto especifico puede ser un simple elemento en un archivo, el mismo  documento , una ventana o un  XMLHttpRequest.
 
-// _Para registrar más de un eventListener, puedes llamar addEventListener() para el mismo elemento pero con diferentes tipos de eventos o parámetros de captura.
+// _Para registrar más de un addEveventListener, puedes llamar addEventListener() para el mismo elemento pero con diferentes tipos de eventos o parámetros de captura.
 
 // PARAMETROS : TYPE : Una cadena representando el  tipo de evento a escuchar.
 // LISTENER :El objeto que recibe una notificación cuando un evento de el tipo especificado ocurre. Debe ser un objeto implementando la interfaz EventListener o solo una function en JavaScript.
 
 // !ESOS SON COMO LOS 2 PARAMETROS MAS CONOCIDOS O USADOS DE LA FUNCION addEventListener(TYPE,LISTENER)
+
+// ********************EVENTOS CON PARAMETROS Y REMOVER EVENTOS*****************************************
+
+function holaMundo (){
+    alert("hola mundo")
+    console.log(event)
+}
+
+function saludar(nombre = "desconocid@"){
+    alert(`hola ${nombre}`);
+    console.log(event)
+}
+
+const $eventoSemantico = document.getElementById("evento-semantico");
+const $eventoMultiple = document.getElementById("evento-multiple");
+const $eventoRemover = document.getElementById("evento-remover");
+
+    $eventoSemantico.onclick = holaMundo; //se iguala a la funcion que queremos ejecutar, pero sin los parentesis ya que si colocamos los parentesis se ejecuta apenas cargue la pagina 
+    $eventoSemantico.onclick = function (e){
+    alert("hola soy el manejador de eventos semantico")
+    console.log(e)
+    console.log(event)
+}
+
+$eventoMultiple.addEventListener("click",holaMundo);
+$eventoMultiple.addEventListener("click", (e) => {
+    alert("Hola Mundo Manejador de eventos Multiple");
+    console.log(e)
+    console.log(e.type)
+    console.log(e.target)
+});
+
+$eventoMultiple.addEventListener("click",()=> {
+    saludar()
+    saludar("sergio")
+});
+
+// !EVENTOS CON PARAMETROS
+// _como se hace en la linea 558-561 si tu necesitas que una funcion se ejecute en un evento pero necesitas pasarle parametros, simplemente la envuelves en una arrow function o en una funcion anonima y entonces  ya le puedes pasar los parametros porque quien va a estar recibiendo el evento son los parametros
+
+// !REMOVER EVENTOS __________________________
+// MUY IMPORTANTE PARA REMOVER EVENTOS SOLO LO PODEMOS HACER CON MANEJADORES DE EVENTOS MULTIPLES 
+// removeEventListener() esta es una funcion que vamos a utilizar para remover los eventos 
+// recibe como parametros ("type", Listener)
+// !OJO PARA REMOVER EVENTOS PUEDES HACER USO DE FUNCIONES DECLARADAS O EXPRESADAS PORQUE DE LO CONTRARIO NO TE DEJARA HACERLO, EN SI NO SE PUEDE REMOVER EVENTOS DE LA MANO CON FUNCIONES ANONIMAS Y ARROW FUNCTION PORQUE SE PIERDE LA REFERENCIA Y NO PODREMOS COLOCAR COMO SEGUNDO PARAMETRO ESA FUNCION Y NOS LANSARIA ERROR YA QUE COMO SABEMOS RECIBE 2 PARAMETROS QUE SON OBLIGATORIOS
+
+const removerClick = (e) =>{
+    alert(`removiendo el evento ${e.type}`);
+    console.log(e);
+    $eventoRemover.removeEventListener("click",removerClick)
+    $eventoRemover.disabled = true;//esta linea hace que el boton se inaccesible, es una atributo html de los botones 
+}
+
+$eventoRemover.addEventListener("click",removerClick);
+
