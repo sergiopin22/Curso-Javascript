@@ -574,8 +574,48 @@ const removerClick = (e) =>{
     alert(`removiendo el evento ${e.type}`);
     console.log(e);
     $eventoRemover.removeEventListener("click",removerClick)
-    $eventoRemover.disabled = true;//esta linea hace que el boton se inaccesible, es una atributo html de los botones 
+    //$eventoRemover.disabled = true;//esta linea hace que el boton se inaccesible, es una atributo html de los botones 
 }
 
-$eventoRemover.addEventListener("click",removerClick);
+$eventoRemover.addEventListener("click",removerClick,{
+    capture:true
 
+});
+
+// **********************FLUJO DE EVENTOS (BURBUJA Y CAPTURA)****************
+
+// _UN FLUJO DE EVENTOS ES O LO QUE SE ENTIENDE ES COMO SE VA A IR PROPAGANDO EL EVENTO 
+// !UNA VEZ QUE EL EVENTO SE ORIGINA TIENE UNA PROPAGACION EN EL ARBOL DEL DOM POR DEFECTO SE VA DANDO DESDE EL ELEMENTO MAS INTERNO AL MAS EXTERNO QUE EN ESTE CASO ES EL Document, QUE ESTA FASE SE LLAMA FASE DE BURBUJA 
+
+//? YA QUE SE ENTIENDE QUE DESDE ABAJO SE EXPANDE AL TOPE DE ARRIBA COMO EFECTO SODA ESA ES UNA BUENA ANALOGIA PARA LA FASE BURBUJA
+
+const $divEventos = document.querySelectorAll(".eventos-flujo div") //traeme todas la div de eventos flujo 
+console.log($divEventos);
+
+
+function flujoEventos (e){
+    console.log(`Hola te saluda ${this.className} el click lo origino ${e.target.className}`);
+}
+
+$divEventos.forEach(div=>{
+    // _FASE BURBUJA SE HACE SIN PASALRLE EL TERCER PARAMETRO A addEventListener()
+    // div.addEventListener("click",flujoEventos);
+    // _O TAMBIEN LE PUEDES COLOCAR EL VALOR EXPLICITAMENTE A FALSE QUE ES POR DEFECTO
+    // div.addEventListener("click",flujoEventos,false);
+    // _FASE CAPTURA ES TERCER PARAMETRO CON TRUE, FASE CAPTURA ES LO CONTRARIO A BURBUJA 
+    // div.addEventListener("click",flujoEventos,false)
+    div.addEventListener("click",flujoEventos,{
+        capture:false,//captura burbuja 
+        once:true//esta propiedad nos posibilita que se ejecute una vez el evento
+    })
+});
+
+// ?el tercer parametro nos permite varias propiedades como lo aplicamos anteriormente, buscas en MDN el tercer  parametro de addEventListener() y indaga como funciona
+
+
+// !como bien sabemos el tercer parametro de addEventListener() hace referencia a la fase de captura y fase burbuja que es la propagacion de como se van ejecutando los eventos 
+// !los valores que recibe el parametro es false y true
+
+// !!:)Concluimos que por defecto la propagacion de eventos es la burbuja pero a la igual tambien podemos modificar el flujo de los eventos pasandolo a captura como lo hicimos anteriormente
+
+// *********************Siguiente Tema******************************

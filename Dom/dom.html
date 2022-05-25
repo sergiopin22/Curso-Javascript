@@ -46,6 +46,23 @@
           border: 5px solid white;
         }
 
+        .eventos-flujo div{
+          padding: 4rem;
+          font-size:2rem;
+          text-align: center;
+          color: black;
+        }
+
+        .uno{
+          background-color: rgb(234, 255, 0);
+        }
+        .dos{
+          background-color: rgb(225, 255, 0);
+        }
+        .tres{
+          background-color: rgb(255, 255, 255);
+        }
+
     </style>
   </head>
   <body>
@@ -121,6 +138,24 @@
   <button id="evento-multiple">Evento con manejador multiple</button>
   <br><br>
   <button id="evento-remover">Removiendo eventos con manejadores multiples</button>
+  <br>
+  <br>
+  <h4>FLUJO DE EVENTOS</h4>
+  <section class="eventos-flujo">
+    <div class="uno">
+      1
+      <div class="dos">
+        2
+        <div class="tres">
+          3
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+  <br>
+  <br>
   <script src="/Dom/dom.js"></script>
 </body>
 </html>
