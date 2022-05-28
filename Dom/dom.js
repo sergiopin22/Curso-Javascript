@@ -590,25 +590,27 @@ $eventoRemover.addEventListener("click",removerClick,{
 //? YA QUE SE ENTIENDE QUE DESDE ABAJO SE EXPANDE AL TOPE DE ARRIBA COMO EFECTO SODA ESA ES UNA BUENA ANALOGIA PARA LA FASE BURBUJA
 
 const $divEventos = document.querySelectorAll(".eventos-flujo div") //traeme todas la div de eventos flujo 
+const $linkEventos = document.querySelector(".eventos-flujo a")
 console.log($divEventos);
 
 
-function flujoEventos (e){
-    console.log(`Hola te saluda ${this.className} el click lo origino ${e.target.className}`);
-}
+// function flujoEventos (e){
+//     console.log(`Hola te saluda ${this.className} el click lo origino ${e.target.className}`);
+// }
 
-$divEventos.forEach(div=>{
+//$divEventos.forEach(div=>{
     // _FASE BURBUJA SE HACE SIN PASALRLE EL TERCER PARAMETRO A addEventListener()
     // div.addEventListener("click",flujoEventos);
     // _O TAMBIEN LE PUEDES COLOCAR EL VALOR EXPLICITAMENTE A FALSE QUE ES POR DEFECTO
     // div.addEventListener("click",flujoEventos,false);
     // _FASE CAPTURA ES TERCER PARAMETRO CON TRUE, FASE CAPTURA ES LO CONTRARIO A BURBUJA 
     // div.addEventListener("click",flujoEventos,false)
-    div.addEventListener("click",flujoEventos,{
-        capture:false,//captura burbuja 
-        once:true//esta propiedad nos posibilita que se ejecute una vez el evento
-    })
-});
+    //div.addEventListener("click",flujoEventos,{
+        //capture:false,//captura burbuja 
+        //once:true//esta propiedad nos posibilita que se ejecute una vez el evento
+    //})
+//});
+
 
 // ?el tercer parametro nos permite varias propiedades como lo aplicamos anteriormente, buscas en MDN el tercer  parametro de addEventListener() y indaga como funciona
 
@@ -618,4 +620,46 @@ $divEventos.forEach(div=>{
 
 // !!:)Concluimos que por defecto la propagacion de eventos es la burbuja pero a la igual tambien podemos modificar el flujo de los eventos pasandolo a captura como lo hicimos anteriormente
 
-// *********************Siguiente Tema******************************
+// ****!implementamos el codigo de la linea 600 hasta la linea 611 en el siguiente tema
+// *****!implementamos el codigo de la linea 596 hasta la linea 598 en el siguiente tema
+
+// *********************STOPPROPAGATION Y PREVENTDEFAULT******************************
+//_ El método stopPropagation() de la interfaz Event evita la propagación adicional del evento actual en las fases de captura y bubbling.
+//? sintaxis : event.stopPropagation();
+
+//function flujoEventos (e){
+   // console.log(`Hola te saluda ${this.className} el click lo origino ${e.target.className}`);
+    //e.stopPropagation(); //esto lo que hace es eliminar esa propagacion   
+//}
+
+
+//$divEventos.forEach(div=>{
+    //div.addEventListener("click",flujoEventos)
+//});
+
+//$linkEventos.addEventListener("click",(e)=>{
+    //alert("hola bro")
+    //e.preventDefault();//Cancela el evento si este es cancelable, sin detener el resto del funcionamiento del evento, es decir, puede ser llamado de nuevo.
+    // sintaxis : event.preventDefault()
+    //e.stopPropagation();
+//})
+
+    //******************** DELEGACION DE EVENTOS *************************
+
+function flujoEventos (e){
+    console.log(`Hola te saluda ${this.className} el click lo origino ${e.target.className}`);
+}
+    document.addEventListener("click", (e) =>{
+        console.log("click en",e.target);
+        if(e.target.matches(".eventos-flujo div")){
+            flujoEventos(e);
+        }
+        if(e.target.matches(".eventos-flujo a")){
+            alert("hola bro")
+            e.preventDefault();
+        }
+    });
+
+//!!Alerta Conclusion : Se acabó colocar addeventlistener a todo... Solo al document y de allí puro if... Gracias Jon por compartir tan buen contenido!
+
+// ***********************Tema*********************
