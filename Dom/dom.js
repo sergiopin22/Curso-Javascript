@@ -662,4 +662,51 @@ function flujoEventos (e){
 
 //!!Alerta Conclusion : Se acabó colocar addeventlistener a todo... Solo al document y de allí puro if... Gracias Jon por compartir tan buen contenido!
 
-// ***********************Tema*********************
+// ***********************BOM BROWSER OBJECT MODEL*********************
+
+// no son mas que propiedades y metodos que cuelgan en si de la ventana del navegador DEL OBJETO WINDOW
+// !PROPIEDADES QUE SON IMPORTANTES EN LA VENTANA WINDOW
+// obvio hay mas pero vamos a ver las que por el momento resaltan mas
+
+
+window.addEventListener("resize", e =>{//resize redireccionamiento
+    console.clear()
+    console.log("***********Evento Resize************")
+    console.log(window.innerWidth)//hace referencia al tamaño del ancho de nuestra ventana el viewport
+    console.log(window.innerHeight)//hace referencia al tamaño del alto de nuestra ventana el viewport
+    console.log(window.outerWidth)//hace referencia al tamaño del ancho de nuestra ventana del navegador
+    console.log(window.outerHeight)//hace referencia al tamaño del alto de nuestra ventana del navegador
+    console.log(e)
+})
+
+window.addEventListener("scroll", e =>{//scroll como bien dice es del scroll
+    console.clear()
+    console.log("***********Evento Scroll************")
+    console.log(window.scrollY)//nos da en pixeles que tan lejano esta del lado left
+    console.log(window.scrollX)//nos da en pixeles que tan lejano esta del alto top 
+    console.log(e)
+})
+
+window.addEventListener('load',e =>{//load es la carga
+    // console.clear()
+    console.log("***********Evento Load************")
+    console.log(window.screenY)//nos da en pixeles la cordenada de la ventana
+    console.log(window.screenX)//nos da en pixeles la cordenada de la ventana
+    // _y si tiene maximisada su ventana pues les va a dar el mismo valor que innerWidth y innerHeight
+    console.log(e)
+})
+
+document.addEventListener('DOMContentLoaded',e =>{//load es la carga
+    // console.clear()
+    console.log("***********DOMContentLoaded************")
+    console.log(window.screenY)//nos da en pixeles la cordenada de la ventana
+    console.log(window.screenX)//nos da en pixeles la cordenada de la ventana
+    // _y si tiene maximisada su ventana pues les va a dar el mismo valor que innerWidth y innerHeight
+    console.log(e)
+})
+
+// !CUANDO TENGAMOS QUE HACER QUE ALGO CARGUE EN CUANTO EL DOM ESTE LISTO ES MUY APROPIADO UTILIZAR DEL DOCUMENT EL DOMContentLoaded QUE UTILIZAR DEL WINDOW EL EVENTO load YA LO COMPRABAMOS Y VIMOS DE QUE ES HASTA SEIS VECES E INCLUSO SIETE MEJOR EL DEL DOCUMENT
+
+// ! ES MUCHO MAS EFICIENTE TRABAJAR CON EL DOMContentLoaded QUE CON LOADED SOBRE TODO CUANDO ESTEMOS HACIENDO PETICIONES ASINCRONAS PORQUE APENAS CARGUE EL CONTENIDO HTML EL EVENTO DOMContentLoaded SE DISPARA MUCHO MAS RAPIDO QUE LOADED
+
+// !!!!!!!OJO PERO EL DOMContentLoaded NO SE ESPERA A QUE CARGUE LAS HOJAS DE ESTILO E INCLUSOS LOS SCRIPT QUE HAYAN DE HECHO APENAS CARGA EL HTML ESTE SE DISPARA, EN CAMBIO EL EVENTO Load SI SE ESPERA QUE CARGUEN LAS HOJAS DE ESTILOS Y SCRIPT NECESARIOS Y TODO LO RELACIONADO CON EL FUNCIONAMIENTO DE LA APLICACION PARA DESPUES EJECUTARSE 
