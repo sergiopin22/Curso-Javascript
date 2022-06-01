@@ -744,8 +744,44 @@ $btnImprimir.addEventListener('click', e =>{
 
 // !vamos a tocar y aprender 3 objetos muy importantes !!!!!!!
     // _Objeto Url = location
+    // _Objeto Historial = history
 
 
     console.clear();
     console.log("*****************Objeto Url = location*****************")
-    console.log(location)
+    console.log(location);
+    console.log(location.origin);//da la ruta de la url o donde se origina 
+    console.log(location.protocol);//nos da el protocolo ya estando en un servidor nos vota http: de manera local votaria file:
+    console.log(location.host);//da el nombre del dominio si es que ya esta en un servidor 
+    console.log(location.port);//da el puerto del servidor al que este colgado 
+    console.log(location.href);//el href es toda la url 
+    console.log(location.hash);//esto lo que nos ayuda es a detectar el valor de la url que esta despues de un #
+    console.log(location.pathname);//este nos muestra el archivo al que esta consultando o mostrando el documento 
+    console.log(location.search)//este detecta y muestra lo que se esta despues del signo de interrogacion y nos muestra que es lo que esta colocando el usuario final 
+    //!location.reload()//esto recarga la pagina  
+
+    console.clear();
+    console.log("*****************Objeto Historial = history *****************")
+    console.log(history)
+    console.log(history.length)//nos da el numero de paginas que podemos acceder ya sea hacia atras o hacia delante, ya que previamente en esas paginas estuvimos y se que almacenadas en history - historial
+
+    // EL HISTORY TIENE UNOS METODOS MUY IMPORTANTES PARA AVANZAR O RETROCEDER PAGINAS QUE YA HABIAMOS PREVIAMENTE INGRESADO LOS METODOS SON 
+
+    //_history.back(3)//esto quiere decir devuelveme 3 paginas atras
+    //_history.forward(3)//esto quiere decir devuelveme 3 paginas hacia adelante
+    //_history.go(3)//este metodo nos da la posibilidad de ir a una pagina ya sea adelante o hacia atras
+    //! go hace lo mismo que los metodos anteriormente mencionados con la diferencia que este si recibe numero negativos para paginas hacia atras y numeros positivos para paginas para adelante
+    //!! estos metodos va a funcionar en base al historial de navegacion, una vez recargada la pagina se pierde ese historial y no se puede hacer uso de estos metodos
+
+    console.clear();
+    console.log("*****************Objeto Navegador = navigator *****************")
+    console.log(navigator)
+    console.log(navigator.connection)
+    console.log(navigator.geolocation)
+    console.log(navigator.mediaDevices)
+    console.log(navigator.mimeTypes)
+    console.log(navigator.onLine)
+    console.log(navigator.serviceWorker)
+    console.log(navigator.storage)
+    console.log(navigator.usb)
+    console.log(navigator.userAgent)
