@@ -13,7 +13,7 @@
     box-sizing: border-box;
     font-family: var(--main-font);
     font-size: var(--font-size);
-    scroll-behavior:smooth;
+    scroll-behavior: smooth;
   }
   
   *,
@@ -82,7 +82,7 @@
     background-color: var(--second-modal-color);
     opacity: 0;
     visibility: hidden;
-    transition: transform 0.6s ease, opacity 0.5s ease;
+    transition: transform 0.3s ease, opacity 0.5s ease;
     /* De arriba */
     transform: translate(0, -100%);
     /* De abajo */
