@@ -45,7 +45,7 @@
     position: sticky;
     z-index: 997;
     top: 0;
-    padding: 1rem;
+    padding: 0.1em;
     background-color: var(--main-color);
     color: var(--second-color);
   }
