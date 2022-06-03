@@ -58,3 +58,7 @@
 
     xhr.send()//enviamos la peticion con el metodo send()
 })();
+
+
+// *****************AJAX CON API DE FETCH************
+
