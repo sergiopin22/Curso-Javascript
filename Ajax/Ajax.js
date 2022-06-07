@@ -61,4 +61,80 @@
 
 
 // *****************AJAX CON API DE FETCH************
+// _La API Fetch proporciona una interfaz para obtener recursos (incluso a traves de la red). Parecera familiar a quien sea que haya usado XMLHttpRequest, pero proporciona un conjunto de características más potentes y flexibles. Este artículo explica algunos de los conceptos básicos de la API Fetch.
 
+// !!Fetch toma la naturaleza asíncrona de dichas peticiones un paso adelante. La API esta completamente basada en Promise.
+
+(()=>{
+    //console.log("PROBANDO LA API DE FETCH")
+    $fetch = document.getElementById("fetch");
+    $fragment = document.createDocumentFragment();
+    
+    fetch("https://jsonplaceholder.typicode.com/users")
+        .then((respuesta) =>{
+        //console.log(respuesta)
+        return respuesta.ok ? respuesta.json() : Promise.reject(respuesta);
+    }).then(json => {
+        //console.log(json)
+        // $fetch.textContent = json;
+        json.forEach(el=>{//para cada elemento 
+            const $li = document.createElement("li");
+            $li.innerHTML = `${el.name} --- ${el.email} --- ${el.phone}`;
+            $fragment.appendChild($li)//lo metemos al fragment
+        })
+
+        $fetch.appendChild($fragment)
+    })
+    .catch((err) =>{
+        //console.log("Estamos en el catch",err)
+        //console.log("Se Presento Un Error")
+        let message = err.statusText ||"Ocurrio un error";
+        $fetch.innerHTML = `Error ${err.status}: ${message}`;
+    })//.finally(()=> console.log("Esto se ejecutara independientemente del resultado de la Promesa Fetch"))
+})();
+
+// _el then() ejecuta la parte positiva si la promesa se resuelve y el catch() si la promesa no se resuelve
+// _El método finally() devuelve una Promise. Cuando la promesa se resuelve, sea exitosa o rechazada, la función de callback específicada será ejecutada. Esto ofrece una forma de ejecutar código sin importar como se haya resuelto la promesa.
+
+
+    //*****************AJAX: API Fetch + Async-Await*************** 
+
+(()=>{
+    $fetchAsync = document.getElementById("fetch-Async");
+    $fragment = document.createDocumentFragment();
+    
+    async function getData(){//creamos una funcion async para hacer uso de los await
+        
+        // "https://api.nasa.gov/planetary/apod?api_key=WmIgxHftdHKOiQ7AL26iXogv1nnJ4WptBxiKbWRl"
+        try{//lo que se va a ejecutar
+            let res =  await fetch("https://api.nasa.gov/planetary/apod?api_key=WmIgxHftdHKOiQ7AL26iXogv1nnJ4WptBxiKbWRl");//con el await le decimos que espere que se haga la peticions
+            let json = await res.json();//el json recibe la peticion y la parciamos y le decimo que espere mientras se hace el proceso y no salte de una a la siguiente linea
+            console.log(res,json)
+
+
+            if(!res.ok)throw{status:res.status, statusText:res.statusText}
+
+
+
+            
+            for (const key in json) {
+                const $li = document.createElement("li");
+                $li.innerHTML = `Propiedad: ${key}: ${json[key]}`;
+                $fragment.appendChild($li)//lo metemos al fragment
+            }
+            
+                const $imageApi = document.createElement("img");
+                $imageApi.setAttribute("src",`${json.hdurl}`)
+                $fragment.appendChild($imageApi)//lo metemos al fragment
+
+                $fetchAsync.appendChild($fragment)
+
+        }catch(err){//manejo del error
+            console.log(err)
+            let message = err.statusText ||"Ocurrio un error";
+            $fetchAsync.innerHTML = `Error ${err.status}: ${message}`;
+        }
+
+    }
+    getData()
+})();
