@@ -1,6 +1,10 @@
 //!! Una introducción a AJAX.
 // JavaScript Asíncrono + XML (AJAX) no es una tecnología por sí misma, es un término que describe un nuevo modo de utilizar conjuntamente varias tecnologías existentes. Esto incluye: HTML o XHTML, CSS, JavaScript, DOM, XML, XSLT, y lo más importante, el objeto XMLHttpRequest. Cuando estas tecnologías se combinan en un modelo AJAX, es posible lograr aplicaciones web capaces de actualizarse continuamente sin tener que volver a cargar la página completa. Esto crea aplicaciones más rápidas y con mejor respuesta a las acciones del usuario.
 
+// const { default: axios } = require("axios");
+
+// const { default: axios } = require("axios");
+
 // _AJAX significa Asynchronous JavaScript And XML. En pocas palabras, es el uso del objeto XMLHttpRequest para comunicarse con los servidores.
 // Puede enviar y recibir información en varios formatos, incluidos JSON, XML, HTML y archivos de texto.
 // El atractivo de AJAX es su naturaleza "asíncrona", lo que significa que puede comunicarse con el servidor, intercambiar datos y actualizar la página sin tener que recargar el navegador.
@@ -29,12 +33,12 @@
     $fragment = document.createDocumentFragment();
     xhr.addEventListener("readystatechange",(e)=>{ //readystatechange detecta cualquier cambio o ocurrencia 
         if(xhr.readyState !== 4)return;//no retornes nada
-        console.log(xhr)
+        //console.log(xhr)
         if(xhr.status >= 200 && xhr.status < 300){
-            console.log("Hecho Exitosamente")
-            console.log(xhr.responseText)//ver los datos que trajimos de la api 
+            //console.log("Hecho Exitosamente")
+            //console.log(xhr.responseText)//ver los datos que trajimos de la api 
             let json = JSON.parse(xhr.responseText)//vamos a convertirlo de json a javascript
-            console.log(json)
+            //console.log(json)
 
             json.forEach(el=>{//para cada elemento 
                 const $li = document.createElement("li");
@@ -109,7 +113,7 @@
         try{//lo que se va a ejecutar
             let res =  await fetch("https://api.nasa.gov/planetary/apod?api_key=WmIgxHftdHKOiQ7AL26iXogv1nnJ4WptBxiKbWRl");//con el await le decimos que espere que se haga la peticions
             let json = await res.json();//el json recibe la peticion y la parciamos y le decimo que espere mientras se hace el proceso y no salte de una a la siguiente linea
-            console.log(res,json)
+            //console.log(res,json)
 
 
             if(!res.ok)throw{status:res.status, statusText:res.statusText}
@@ -130,7 +134,7 @@
                 $fetchAsync.appendChild($fragment)
 
         }catch(err){//manejo del error
-            console.log(err)
+            //console.log(err)
             let message = err.statusText ||"Ocurrio un error";
             $fetchAsync.innerHTML = `Error ${err.status}: ${message}`;
         }
@@ -138,3 +142,37 @@
     }
     getData()
 })();
+
+// *****************MECANISMO POR LA LIBRERIA AXIOS***************** 
+// ESTA BASADA EN PROMESAS 
+//una ventaja que puedo ver es que ya esta parseado en el parametro data la respuesta y no tengo que hacerlo como fetch o en XMLhttprequest
+//otra cosa que podemos notar es que trasbambalinas axios utiliza a XMLhttprequest en sus entrañas 
+
+
+(()=>{
+    $axios = document.getElementById("axios");
+    $fragment = document.createDocumentFragment();
+    axios.get("https://jsonplaceholder.typicode.com/users")
+    .then((res) =>{
+        console.log(res)
+        let data = res.data;
+        data.forEach(el=>{//para cada elemento 
+            const $li = document.createElement("li");
+            $li.innerHTML = `${el.name} --- ${el.email} --- ${el.phone}`;
+            $fragment.appendChild($li)//lo metemos al fragment
+        })
+
+        $axios.appendChild($fragment)
+    })
+    .catch((err) =>{
+        let message = err.response.statusText || "Ocurrio un error";
+        $axios.innerHTML = `Error ${err.response.statusText}:${message}`
+        console.log("Estamos en el catch",err.response)
+    })
+    .finally(()=>{
+        console.log("Esto se ejecutara independientemente del resultado Axios")
+    })
+})();
+
+
+
