@@ -154,7 +154,7 @@
     $fragment = document.createDocumentFragment();
     axios.get("https://jsonplaceholder.typicode.com/users")
     .then((res) =>{
-        console.log(res)
+        //console.log(res)
         let data = res.data;
         data.forEach(el=>{//para cada elemento 
             const $li = document.createElement("li");
@@ -166,13 +166,50 @@
     })
     .catch((err) =>{
         let message = err.response.statusText || "Ocurrio un error";
-        $axios.innerHTML = `Error ${err.response.statusText}:${message}`
-        console.log("Estamos en el catch",err.response)
+        $axios.innerHTML = `Error ${err.response.status}:${message}`
+        //console.log("Estamos en el catch",err.response)
     })
     .finally(()=>{
-        console.log("Esto se ejecutara independientemente del resultado Axios")
+        //console.log("Esto se ejecutara independientemente del resultado Axios")
     })
 })();
 
+
+// *****************MECANISMO POR LA LIBRERIA AXIOS + ASYNC-AWAIT*****************
+
+(()=>{
+    $axiosAsync = document.getElementById("axios-Async");
+    $fragment = document.createDocumentFragment();
+    
+
+    async function getData(){
+
+        try{
+            let res =  await axios.get("https://jsonplaceholder.typicode.com/users");
+            let data = await res.data;
+            console.log(res,data)
+
+            data.forEach(el=>{//para cada elemento 
+                const $li = document.createElement("li");
+                $li.innerHTML = `${el.name} --- ${el.email} --- ${el.phone}`;
+                $fragment.appendChild($li)//lo metemos al fragment
+            })
+    
+            $axiosAsync.appendChild($fragment)
+
+
+        } catch(err) {
+        //console.log(err.response)
+        let message = err.response.statusText || "Ocurrio un error";
+        $axiosAsync.innerHTML = `Error ${err.response.status}:${message}`;
+        } finally { 
+            console.log("Esto se ejecutara independientemente del try catch");
+        }
+
+    }
+
+    getData()
+
+})();
 
 
