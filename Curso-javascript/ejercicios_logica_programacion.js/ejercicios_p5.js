@@ -68,7 +68,6 @@ const contadorAños = (fecha = undefined) =>{
     // Validaciones
     
     if(fecha !== undefined){
-
         let fechaActual = new Date;
         fechaActual = fechaActual.getFullYear();
         añosTranscurridos = fecha - fechaActual;

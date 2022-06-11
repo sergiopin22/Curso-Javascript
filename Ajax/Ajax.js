@@ -75,9 +75,9 @@
     $fragment = document.createDocumentFragment();
     
     fetch("https://jsonplaceholder.typicode.com/users")
-        .then((respuesta) =>{
+        .then((res) =>{
         //console.log(respuesta)
-        return respuesta.ok ? respuesta.json() : Promise.reject(respuesta);
+        return res.ok ? res.json() : Promise.reject(res);
     }).then(json => {
         //console.log(json)
         // $fetch.textContent = json;
