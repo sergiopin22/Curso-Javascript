@@ -31,9 +31,9 @@ export default function tempo(id,houres,minutes,finalMessage,houresbox,minutesbo
         let $minutes = `<h3>${minutesNumber}</h3>`
         let $seconds = `<h3>${$seconds}</h3>`
         let temporizador = `<h3>${$houres} Horas ${$minutes} Minutos : ${$seconds} Segundos</h3>`
-        d.querySelector(id).innerHTML = temporizador
-        d.querySelector(houresbox).innerHTML = $houres
-        d.querySelector(minutesbox).innerHTML = $minutes
+        d.querySelector(id).innerHTML = temporizador;
+        d.querySelector(houresbox).innerHTML = $houres;
+        d.querySelector(minutesbox).innerHTML = $minutes;
     }, 1000);
 
     }
