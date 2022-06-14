@@ -24,6 +24,21 @@
       "id": 5,
       "nombre": "ikki",
       "constelacion": "Fénix"
+    },
+    {
+      "nombre": "Saga",
+      "constelacion": "Geminis",
+      "id": 6
+    },
+    {
+      "nombre": "Aldebaran",
+      "constelacion": "Tauro",
+      "id": 7
+    },
+    {
+      "nombre": "Manigoldo",
+      "constelacion": "Cancer ",
+      "id": 8
     }
   ],
   "dioses": [
