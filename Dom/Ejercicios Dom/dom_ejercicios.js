@@ -1,6 +1,7 @@
 import hamburgerMenu from "./app_menu.js";
 import { Alarma, digitalClock } from "./app_reloj.js";
 import tempo from "./app_temporizador.js";
+import scrollTopBtn from "./btn_scroll.js";
 import { moveBall, shortcuts } from "./teclado.js";
 
 
@@ -10,7 +11,8 @@ d.addEventListener("DOMContentLoaded", (e) =>{
     hamburgerMenu(".panel-btn", ".panel", ".menu a")
     digitalClock("#reloj", "#activar-reloj","#desactivar-reloj")
     Alarma("#audio","#activar-alarma","#desactivar-alarma")
-    tempo("#countdown","#audio",0,0,0,"DESCANSA CRACK 😎","#houres","#minutes","#seconds")
+    tempo("#countdown","#audio",0,49,0,"DESCANSA CRACK 😎","#houres","#minutes","#seconds")
+    scrollTopBtn(".scroll-top-btn")
 })
 
 d.addEventListener("keydown", (e)=>{//keydomn es cuando presionas la tecla

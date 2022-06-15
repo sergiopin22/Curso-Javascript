@@ -7,7 +7,7 @@ export default function tempo(id,sound,houres,minutes,seconds,finalMessage,houre
     else if(houres >= 0 && minutes >= 0 && seconds >= 0){
         let houresNumber = houres;
         let minutesNumber = minutes;
-        let seconds = 4;
+        let seconds = 60;
 
         
 
