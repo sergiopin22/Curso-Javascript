@@ -10,7 +10,7 @@ d.addEventListener("DOMContentLoaded", (e) =>{
     hamburgerMenu(".panel-btn", ".panel", ".menu a")
     digitalClock("#reloj", "#activar-reloj","#desactivar-reloj")
     Alarma("#audio","#activar-alarma","#desactivar-alarma")
-    tempo("#countdown",50,0,"Descansa 😎","#houres","#minutes")
+    tempo("#countdown","#audio",0,0,0,"DESCANSA CRACK 😎","#houres","#minutes","#seconds")
 })
 
 d.addEventListener("keydown", (e)=>{//keydomn es cuando presionas la tecla
