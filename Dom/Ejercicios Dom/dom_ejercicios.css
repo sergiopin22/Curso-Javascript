@@ -25,6 +25,7 @@
   body {
     margin: 0;
     overflow-x: hidden;
+    transition: 0.5s ease-in-out all;
   }
   
   img,
@@ -206,6 +207,7 @@
     outline: 0;
     border: 0;
   }
+  
 
   .scroll-top-btn:hover{
     background-color:var(--second-color);
@@ -217,3 +219,34 @@
     visibility: hidden;
     opacity: 0;
   }
+
+  /* ********Tema Dark - Tema Oscuro ++++++++++ */
+
+.btn-Dark{
+  position: fixed;
+  z-index: 9999;
+  bottom: 1vh;
+  left:1vw;
+  width:4rem;
+  height:4rem;
+  border-radius: 50%;
+  font-size:2rem;
+  font-weight:bold;
+  background-color:var(--second-color);
+  color:var(--second-color);
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+}
+
+.btn-Dark:hover{
+  background-color: rgb(26, 26, 26);
+  color:var(--second-color);
+}
+
+.modeDark{
+  background-color:#000000;
+  color:var(--main-color);
+  transition: 0.5s ease-in-out all;
+}
+

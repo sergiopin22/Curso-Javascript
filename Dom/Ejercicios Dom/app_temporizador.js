@@ -12,7 +12,7 @@ export default function tempo(id,sound,houres,minutes,seconds,finalMessage,houre
         
 
     let intervalo = setInterval(() => {
-        console.log(`${houresNumber}:${minutesNumber},${seconds}`)
+        //console.log(`${houresNumber}:${minutesNumber},${seconds}`)
         // console.log("hola")
         
         seconds--;
@@ -41,9 +41,9 @@ export default function tempo(id,sound,houres,minutes,seconds,finalMessage,houre
         d.querySelector(houresbox).innerHTML = $houres;
         d.querySelector(minutesbox).innerHTML = $minutes;
         d.querySelector(secondsbox).innerHTML = $seconds;
-        $houres.appendChild(id) 
-        $minutes.appendChild(id) 
-        $seconds.appendChild(id) 
+        // $seconds.appendChild(id) 
+        // $minutes.appendChild(id) 
+        // $houres.appendChild(id) 
     }, 1000);
 
     }
